@@ -1,0 +1,16 @@
+<div class="container">
+  <p>Demo page.</p>
+  <app-custom-select
+    [(ngModel)]="selectedValue1"
+    [options]="selectOptions"
+    style="
+      --font-family: 'Roboto';
+      --font-size: 16px;
+    "
+  ></app-custom-select>
+  <app-custom-select
+    [(ngModel)]="selectedValue2"
+    [options]="selectOptions"
+    [disabled]="true"
+  ></app-custom-select>
+</div>
