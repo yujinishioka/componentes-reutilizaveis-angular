@@ -1,13 +1,23 @@
 <select
   [(ngModel)]="value"
   (ngModelChange)="handleChangeDirect($event)"
-  [ngClass]="{ 'empty': !value }"
   [disabled]="disabled"
   [attr.aria-disabled]="disabled"
   [attr.aria-label]="placeholder"
 >
-  <option value="" disabled hidden>{{ placeholder }}</option>
-  <option *ngFor="let opt of options" [value]="opt.value">
+  <option
+    value=""
+    disabled
+    selected
+  >
+    {{ placeholder }}
+  </option>
+  <option
+    *ngFor="let opt of options"
+    [value]="opt.value"
+    [disabled]="disabled"
+    class="custom-select-option"
+  >
     {{ opt.label }}
   </option>
 </select>

@@ -1,11 +1,12 @@
 :host {
   --font-family: Arial, sans-serif;
   --font-size: 1rem;
-  --text-color-empty: #999;
-  --color: #333;
-  --background: #fff;
-  --padding-horizontal: 1rem;
-  --padding-vertical: 0.5rem;
+  --text-color-empty: rgba(0, 0, 0, 0.3);
+  --color: rgba(0, 0, 0, 0.9);
+  --border-color: rgba(0, 0, 0, 0.7);
+  --background: rgba(255, 255, 255, 0.95);
+  --padding-horizontal: 0.5rem;
+  --padding-vertical: 0.7rem;
 
   font-family: var(--font-family);
   font-size: var(--font-size);
@@ -17,7 +18,7 @@ select {
   color: var(--color);
   background-color: var(--background);
   padding: var(--padding-vertical) var(--padding-horizontal);
-  border: var(--border-width-sm, 1px) solid var(--color);
+  border: var(--border-width-sm, 1px) solid var(--border-color);
   border-radius: var(--border-radius-md, 6px);
   width: 100%;
   min-width: 280px;
@@ -34,10 +35,6 @@ select {
   background-size: 1.5em 1.5em;
 }
 
-select.empty {
-  color: var(--text-color-empty);
-}
-
 select::after {
   content: '';
   color: var(--color);
@@ -52,4 +49,21 @@ select.disabled {
   background-color: var(--background);
   color: var(--text-color-empty);
   cursor: not-allowed;
+}
+
+select:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 2px;
+}
+
+option.custom-select-option:checked {
+  font-weight: bold;
+  background-color: #e0f0ff;
+  position: relative;
+}
+
+option.custom-select-option:checked::before {
+  content: "✔ ";
+  position: absolute;
+  left: 0.5em;
 }

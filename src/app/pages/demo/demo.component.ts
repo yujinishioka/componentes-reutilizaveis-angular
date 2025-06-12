@@ -16,7 +16,7 @@ export class DemoComponent {
   selectOptions = [
     { value: 'html', label: 'HTML' },
     { value: 'css', label: 'CSS' },
-    { value: 'js', label: 'JavaScript' }
+    { value: 'js', label: 'JavaScript', disabled: true }
   ];
 
   switchState1 = false;
