@@ -43,7 +43,13 @@ select::after {
   color: var(--color);
 }
 
-select:hover {
+select:not(.disabled):hover {
   cursor: pointer;
   border-color: blue;
+}
+
+select.disabled {
+  background-color: var(--background);
+  color: var(--text-color-empty);
+  cursor: not-allowed;
 }

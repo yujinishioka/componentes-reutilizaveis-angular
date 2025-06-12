@@ -1,1 +1,9 @@
-<p>custom-switch works!</p>
+<label class="switch" [class.disabled]="disabled">
+  <input
+    type="checkbox"
+    [checked]="modelValue"
+    (change)="toggle()"
+    [disabled]="disabled"
+  />
+  <span class="slider"></span>
+</label>

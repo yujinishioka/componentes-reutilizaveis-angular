@@ -13,4 +13,24 @@
     [options]="selectOptions"
     [disabled]="true"
   ></app-custom-select>
+  <div class="switch-container">
+    <app-custom-switch
+      [(modelValue)]="switchState1"
+    ></app-custom-switch>
+    <p>Estado: {{ switchState1 }}</p>
+  </div>
+  <div class="switch-container">
+    <app-custom-switch
+      [(modelValue)]="switchState2"
+      [disabled]="true"
+    ></app-custom-switch>
+    <p>Estado: {{ switchState2 }}</p>
+  </div>
+  <div class="switch-container">
+    <app-custom-switch
+      [(modelValue)]="switchState3"
+      [disabled]="true"
+    ></app-custom-switch>
+    <p>Estado: {{ switchState3 }}</p>
+  </div>
 </div>
