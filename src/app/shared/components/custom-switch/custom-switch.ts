@@ -6,8 +6,8 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-custom-switch',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './custom-switch.html',
-  styleUrl: './custom-switch.css',
+  templateUrl: './custom-switch.component.html',
+  styleUrl: './custom-switch.component.css',
   host: {
     tabindex: '0',
     role: 'switch',

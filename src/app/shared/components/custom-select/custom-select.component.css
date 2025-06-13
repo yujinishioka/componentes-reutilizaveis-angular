@@ -6,7 +6,7 @@
   --selected-color: rgba(255, 255, 255);
   --border-color: rgba(0, 0, 0, 0.7);
   --border-color-hover: rgb(20, 58, 129);
-  --background: rgba(255, 255, 255, 0.95);
+  --background: #eee;
   --selected-background: rgb(88, 132, 212);
   --padding-horizontal: 0.5rem;
   --padding-vertical: 0.7rem;
@@ -52,11 +52,12 @@
 
 .dropdown-options {
   list-style: none;
+  width: 100%;
   margin: 2px 0;
   padding: 0;
   position: absolute;
-  width: 100%;
-  background: white;
+  color: var(--color);
+  background: var(--background);
   border: 1px solid var(--border-color);
   border-top: none;
   border-radius: 10px;

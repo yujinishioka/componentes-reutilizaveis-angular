@@ -130,7 +130,7 @@ export class CustomSelectComponent implements ControlValueAccessor {
     } else if (event.key === 'ArrowUp') {
       event.preventDefault();
       this.moveFocus(-1);
-    } else if (event.key === 'Enter' || event.key === 'Tab') {
+    } else if (event.key === 'Enter') {
       const option = this.options[this.focusedIndex];
       if (!option.disabled) {
         this.selectOption(option.value);
@@ -139,7 +139,9 @@ export class CustomSelectComponent implements ControlValueAccessor {
         this.moveFocus(1);
       }
     } else if (event.key === 'Escape') {
-      this.dropdownOpen = false;
+      this.closeDropdown();
+    } else if (event.key === 'Tab') {
+      this.closeDropdown();
     }
   }
 

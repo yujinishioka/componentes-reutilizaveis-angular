@@ -1,24 +1,54 @@
 <div class="container">
-  <p>Demo page.</p>
+  <h2>Customize Select</h2>
+
+  <label for="bgColorInput">Background Color</label>
+  <input id="bgColorInput" type="color" [(ngModel)]="bgColorSelect" />
+
+  <label for="textColorInput">Text Color</label>
+  <input id="textColorInput" type="color" [(ngModel)]="textColorSelect" />
+
   <app-custom-select
     [(ngModel)]="selectedValue1"
     [options]="selectOptions"
-    style="
-      --font-family: 'Roboto';
-      --font-size: 16px;
-    "
+    [ngStyle]="{
+      '--background': bgColorSelect,
+      '--color': textColorSelect,
+    }"
   ></app-custom-select>
+
   <app-custom-select
     [(ngModel)]="selectedValue2"
     [options]="selectOptions"
     [disabled]="true"
   ></app-custom-select>
+
+  <h2>Customize Switch</h2>
+
+  <label for="bgUncheckedCircleInput">Circle Color Unchecked</label>
+  <input id="bgUncheckedCircleInput" type="color" [(ngModel)]="bgUncheckedCircleSwitch" />
+
+  <label for="bgUncheckedTrackInput">Track Color Unchecked</label>
+  <input id="bgUncheckedTrackInput" type="color" [(ngModel)]="bgUncheckedTrackSwitch" />
+
+  <label for="bgCheckedCircleInput">Circle Color Checked</label>
+  <input id="bgCheckedCircleInput" type="color" [(ngModel)]="bgCheckedCircleSwitch" />
+
+  <label for="bgCheckedTrackInput">Track Color Checked</label>
+  <input id="bgCheckedTrackInput" type="color" [(ngModel)]="bgCheckedTrackSwitch" />
+
   <div class="switch-container">
     <app-custom-switch
       [(modelValue)]="switchState1"
+        [ngStyle]="{
+        '--color-unchecked': bgUncheckedCircleSwitch,
+        '--track-unchecked': bgUncheckedTrackSwitch,
+        '--color-checked': bgCheckedCircleSwitch,
+        '--track-checked': bgCheckedTrackSwitch,
+      }"
     ></app-custom-switch>
     <p>Estado: {{ switchState1 }}</p>
   </div>
+
   <div class="switch-container">
     <app-custom-switch
       [(modelValue)]="switchState2"
@@ -26,6 +56,7 @@
     ></app-custom-switch>
     <p>Estado: {{ switchState2 }}</p>
   </div>
+
   <div class="switch-container">
     <app-custom-switch
       [(modelValue)]="switchState3"
