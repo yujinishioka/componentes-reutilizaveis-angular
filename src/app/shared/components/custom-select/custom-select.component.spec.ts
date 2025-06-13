@@ -31,13 +31,57 @@ describe('CustomSelectComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Should show the placeholder when there is no value', () => {
-    component.placeholder = 'Choose an option';
+  it('open dropdown on click', () => {
+    const dropdown = el.nativeElement.querySelector('.dropdown');
+    dropdown.click();
     fixture.detectChanges();
 
-    const select: HTMLSelectElement = fixture.nativeElement.querySelector('select');
-    const selectedOption = select.options[select.selectedIndex];
+    expect(component.dropdownOpen).toBeTrue();
 
-    expect(selectedOption.textContent?.trim()).toBe('Choose an option');
+    const list = el.nativeElement.querySelector('.dropdown-options');
+    expect(list).toBeTruthy();
+  });
+
+  it('select an option on click', () => {
+    component.toggleDropdown();
+    fixture.detectChanges();
+
+    const items = el.nativeElement.querySelectorAll('li');
+    items[1].click();
+
+    fixture.detectChanges();
+
+    expect(component.value).toBe('1');
+    const span = el.nativeElement.querySelector('.dropdown-selected span');
+    expect(span.textContent.trim()).toBe('Option 1');
+  });
+
+  it('emit value on select an option', () => {
+    spyOn(component.valueChange, 'emit');
+
+    component.toggleDropdown();
+    fixture.detectChanges();
+
+    const items = el.nativeElement.querySelectorAll('li');
+    items[2].click();
+    fixture.detectChanges();
+
+    expect(component.valueChange.emit).toHaveBeenCalledWith('2');
+  });
+
+  it('do not permit an disabled option to be selected', () => {
+    const disabledOption = { value: 'x', label: 'Disabled', disabled: true };
+    component.options = [...mockOptions, disabledOption];
+    fixture.detectChanges();
+
+    component.toggleDropdown();
+    fixture.detectChanges();
+
+    const items = el.nativeElement.querySelectorAll('li');
+    const lastItem = items[items.length - 1];
+    lastItem.click();
+    fixture.detectChanges();
+
+    expect(component.value).not.toBe('x');
   });
 });
