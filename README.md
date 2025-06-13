@@ -2,6 +2,21 @@
 
 Projetos de componentes reutilizáveis
 
+## Imagens dos componentes
+
+### Página de teste
+
+<div align="center">
+  <img src="./public/views/test-page.png" alt="Página de teste" width="600"/>
+</div>
+
+### Componentes ativos: (Select e Switch)
+
+<div align="center">
+  <img src="./public/views/select.png" alt="Select" width="300"/>
+  <img src="./public/views/switch-on.png" alt="Switch" width="150"/>
+</div>
+
 ## Estrutura
 
 ```bash
