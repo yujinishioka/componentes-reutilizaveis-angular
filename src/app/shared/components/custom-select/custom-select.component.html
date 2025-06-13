@@ -1,24 +1,40 @@
-<select
-  [(ngModel)]="value"
-  (ngModelChange)="handleChangeDirect($event)"
-  [disabled]="disabled"
+<div
+  class="dropdown"
+  [class.disabled]="disabled"
+  tabindex="0"
+  role="combobox"
+  aria-haspopup="listbox"
+  [attr.aria-expanded]="dropdownOpen"
   [attr.aria-disabled]="disabled"
-  [attr.aria-label]="placeholder"
+  [attr.aria-activedescendant]="'option-' + focusedIndex"
+  (click)="toggleDropdown()"
+  (keydown)="handleKeydown($event)"
+  (focusout)="onBlur($event)"
 >
-  <option
-    value=""
-    disabled
-    selected
+  <div
+    class="dropdown-selected"
+    [class.empty-selected]="value === ''"
   >
-    {{ placeholder }}
-  </option>
-  <option
-    *ngFor="let opt of options"
-    [value]="opt.value"
-    [disabled]="opt.disabled"
-    [ngClass]="{ 'option-disabled': opt.disabled }"
-    class="custom-select-option"
+    {{ selectedLabel || placeholder }}
+  </div>
+
+  <ul
+    *ngIf="dropdownOpen"
+    role="listbox"
+    class="dropdown-options"
+    [id]="'dropdown-options-list'"
   >
-    {{ opt.label }}
-  </option>
-</select>
+    <li
+      *ngFor="let opt of options; let i = index"
+      [id]="'option-' + i"
+      role="option"
+      [attr.aria-selected]="value === opt.value"
+      [class.focused]="focusedIndex === i"
+      [class.disabled]="opt.disabled"
+      (click)="!opt.disabled && selectOption(opt.value)"
+    >
+      <span *ngIf="value === opt.value && !opt.disabled" class="check-mark">✔</span>
+      <span class="option-label">{{ opt.label }}</span>
+    </li>
+  </ul>
+</div>

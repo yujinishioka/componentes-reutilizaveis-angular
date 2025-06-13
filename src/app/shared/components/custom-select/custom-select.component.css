@@ -3,8 +3,11 @@
   --font-size: 1rem;
   --text-color-empty: rgba(0, 0, 0, 0.3);
   --color: rgba(0, 0, 0, 0.9);
+  --selected-color: rgba(255, 255, 255);
   --border-color: rgba(0, 0, 0, 0.7);
+  --border-color-hover: rgb(20, 58, 129);
   --background: rgba(255, 255, 255, 0.95);
+  --selected-background: rgb(43, 93, 187);
   --padding-horizontal: 0.5rem;
   --padding-vertical: 0.7rem;
 
@@ -14,47 +17,73 @@
   display: inline-block;
 }
 
-select {
-  color: var(--color);
-  background-color: var(--background);
-  padding: var(--padding-vertical) var(--padding-horizontal);
-  border: var(--border-width-sm, 1px) solid var(--border-color);
-  border-radius: var(--border-radius-md, 6px);
-  width: 100%;
-  min-width: 280px;
-  min-height: 2.75em;
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-  appearance: none;
-  outline: none;
+.dropdown {
   position: relative;
-
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='%23666' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 0.5em center;
-  background-size: 1.5em 1.5em;
+  user-select: none;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--background);
+  font-size: var(--font-size);
+  min-width: 280px;
+  cursor: pointer;
 }
 
-select::after {
-  content: '';
+.dropdown:hover {
+  border: 1px solid var(--border-color-hover);
+}
+
+.dropdown.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.dropdown-selected {
+  padding: 0.7rem 0.5rem;
   color: var(--color);
 }
 
-select:not(.disabled):hover {
-  cursor: pointer;
-  border-color: blue;
-}
-
-select.disabled {
-  background-color: var(--background);
+.dropdown-selected.empty-selected {
   color: var(--text-color-empty);
-  cursor: not-allowed;
 }
 
-select:focus-visible {
-  outline: 3px solid white;
-  outline-offset: 2px;
+.dropdown-options {
+  list-style: none;
+  margin: 2px 0;
+  padding: 0;
+  position: absolute;
+  width: 100%;
+  background: white;
+  border: 1px solid var(--border-color);
+  border-top: none;
+  border-radius: 10px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 10;
+}
+
+.dropdown-options li {
+  position: relative;
+  padding: 0.5rem 2rem;
+  font-size: small;
+  cursor: pointer;
+}
+
+.dropdown-options li.focused {
+  color: var(--selected-color);
+  background-color: var(--selected-background);
+}
+
+.dropdown-options li.disabled {
+  color: var(--text-color-empty);
+  pointer-events: none;
+}
+
+.dropdown-options li .check-mark {
+  position: absolute;
+  top: 0.25rem;
+  left: 0.8rem;
+  font-weight: bold;
+  font-size: 1rem;
 }
 
 .custom-select-option {
@@ -65,10 +94,4 @@ select:focus-visible {
 
 option.custom-select-option:checked {
   position: relative;
-}
-
-option.custom-select-option:checked::before {
-  display: block;
-  left: 0.5em;
-  content: "✔ ";
 }
