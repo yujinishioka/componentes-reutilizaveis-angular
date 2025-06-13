@@ -1,9 +1,12 @@
 :host {
   --color-unchecked: white;
-  --color-checked: #483D8B;
+  --color-unchecked-hover: #ccc;
+  --color-checked: #343a92;
+  --color-disabled: #adadad;
   --track-unchecked: #ccc;
-  --track-checked: #6495ED;
-  --border-color: rgba(0, 0, 0, 0.7);
+  --track-checked: #757cdb;
+  --border-color: rgba(22, 12, 12, 0.7);
+  --border-color-disabled: #8d8d8d;
   --border-width-md: 1px;
   --icon-color: white;
 }
@@ -23,7 +26,6 @@
 }
 
 .switch.disabled {
-  opacity: 0.6;
   pointer-events: none;
   cursor: not-allowed;
 }
@@ -82,11 +84,12 @@ input:checked + .slider::after {
   transform: rotate(45deg) scale(1);
 }
 
-input:checked:disabled + .slider {
-  background-color: var(--color-unchecked);
+input:disabled + .slider {
+  background-color: var(--color-disabled);
 }
 
-input:checked:disabled + .slider::before {
-  background-color: var(--color-unchecked);
+input:disabled + .slider::before {
+  background-color: var(--color-disabled);
+  border-color: var(--border-color-disabled);
 }
 

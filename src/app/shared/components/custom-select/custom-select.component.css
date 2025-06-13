@@ -7,7 +7,7 @@
   --border-color: rgba(0, 0, 0, 0.7);
   --border-color-hover: rgb(20, 58, 129);
   --background: rgba(255, 255, 255, 0.95);
-  --selected-background: rgb(43, 93, 187);
+  --selected-background: rgb(88, 132, 212);
   --padding-horizontal: 0.5rem;
   --padding-vertical: 0.7rem;
 
@@ -39,8 +39,10 @@
 
 .dropdown-selected {
   display: flex;
-  padding: 0.7rem 0.5rem;
+  padding: 0.7rem 0.5rem 0.5rem 0.5rem;
+  align-items: center;
   justify-content: space-between;
+  justify-items: center;
   color: var(--color);
 }
 
@@ -66,7 +68,7 @@
 .dropdown-options li {
   display: flex;
   position: relative;
-  padding: 0.5rem 2rem;
+  padding: 0.3rem 2rem;
   font-size: small;
   cursor: pointer;
 }
@@ -83,10 +85,10 @@
 
 .dropdown-options li .check-mark {
   position: absolute;
-  top: 0.25rem;
-  left: 0.8rem;
+  top: 0.2rem;
+  left: 1rem;
   font-weight: bold;
-  font-size: 1rem;
+  font-size: smaller;
 }
 
 .custom-select-option {
