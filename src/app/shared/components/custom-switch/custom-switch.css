@@ -22,6 +22,12 @@
   height: 0;
 }
 
+.switch.disabled {
+  opacity: 0.6;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
 .slider {
   position: absolute;
   top: 50%;
@@ -76,8 +82,11 @@ input:checked + .slider::after {
   transform: rotate(45deg) scale(1);
 }
 
-.switch.disabled {
-  opacity: 0.6;
-  pointer-events: none;
-  cursor: not-allowed;
+input:checked:disabled + .slider {
+  background-color: var(--color-unchecked);
 }
+
+input:checked:disabled + .slider::before {
+  background-color: var(--color-unchecked);
+}
+

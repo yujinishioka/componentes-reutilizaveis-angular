@@ -1,59 +1,82 @@
-# ComponentesReutilizaveisAngular
+# Componentes Reutilizaveis Angular
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.1.
+Projetos de componentes reutilizáveis
 
-## Development server
-
-To start a local development server, run:
+## Estrutura
 
 ```bash
-ng serve
+└─app
+  ├─shared
+  │  └─components     # Componentes utilizados para montar as páginas
+  └─pages
+    └───demo          # Página de demonstração dos componentes, exibido na url principal
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Componentes
 
-## Code scaffolding
+### Switch
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Componente de Switch customizável
+
+### Propriedades
+
+Propriedade | Tipo | Descrição
+--- | --- | ---
+checked | boolean | valor ativo do switch
+disabled | boolean | ativa ou desativa a interação
+
+#### Exemplo de uso
 
 ```bash
-ng generate component component-name
+  <app-custom-switch
+    [(modelValue)]="isChecked"
+    [disabled]="false"
+  ></app-custom-switch>
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### Select
+
+Componente de Select customizável
+
+### Propriedades
+
+Propriedade | Tipo | Descrição
+--- | --- | ---
+options | {value: string; label: string; disabled?:boolean}[] | lista de opções disponíveis
+placeholder | string | texto exibido quando nenhum valor é selecionado
+disabled | boolean | ativa ou desativa a interação
+
+#### Exemplo de uso
 
 ```bash
-ng generate --help
+  <app-custom-select
+    [(ngModel)]="selectedValue"
+    [options]="options"
+    [disabled]="false"
+  ></app-custom-select>
 ```
 
-## Building
+## Desenvolvimento
 
-To build the project run:
+#### instalação
 
 ```bash
-ng build
+npm install
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+#### execução
 
 ```bash
-ng test
+npm run start
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+### Testes
 
 ```bash
-ng e2e
+npm run test
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Notas
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Componentes standalones, seguindo as versões mais modernas
+- Os inputs seguem o padrão Angular para acessibilidade e reatividade

@@ -15,7 +15,8 @@
   <option
     *ngFor="let opt of options"
     [value]="opt.value"
-    [disabled]="disabled"
+    [disabled]="opt.disabled"
+    [ngClass]="{ 'option-disabled': opt.disabled }"
     class="custom-select-option"
   >
     {{ opt.label }}

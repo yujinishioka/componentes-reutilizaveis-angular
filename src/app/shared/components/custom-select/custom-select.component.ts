@@ -17,7 +17,19 @@ import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/f
   ]
 })
 export class CustomSelectComponent implements ControlValueAccessor {
-  @Input() options: { value: string; label: string }[] = [];
+  @Input() set options(value: { value: string; label: string; disabled?: boolean }[]) {
+    this._options = value.map(opt => ({
+      ...opt,
+      disabled: opt.disabled ?? false
+    }));
+  }
+
+  get options() {
+    return this._options;
+  }
+
+  private _options: { value: string; label: string; disabled: boolean }[] = [];
+
   @Input() disabled = false;
   @Input() placeholder = 'Choose an option';
 
