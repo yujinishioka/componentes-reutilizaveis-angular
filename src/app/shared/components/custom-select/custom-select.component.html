@@ -15,7 +15,8 @@
     class="dropdown-selected"
     [class.empty-selected]="value === ''"
   >
-    {{ selectedLabel || placeholder }}
+    <span>{{ selectedLabel || placeholder }}</span>
+    <div class="chevron"></div>
   </div>
 
   <ul
